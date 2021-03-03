@@ -28,16 +28,16 @@ BMSTestIF* BMSFactory::getElectricVehicle_BMSTestObject()
 	if(_electricVehicle_bmsInstance == NULL)
 	{
 		_electricVehicle_bmsInstance = new BMS();
-		configureBMS(_electricVehicle_bmsInstance);
+		configureElectricVehicleBMS(_electricVehicle_bmsInstance);
 	}
 	return static_cast<BMSTestIF *>(_electricVehicle_bmsInstance);
 }
 
 /**
- * Description     : configureBMS : Configures the BMS instance with Parameters and Parameter related info ("paramterName in String" , " Units" ,Min Threshold, Max Threshold)
+ * Description     : configureBMS : Configures the ElectricVehicle BMS instance with Parameters and Parameter related info ("paramterName in String" , " Units" ,Min Threshold, Max Threshold)
  *
  */
-void BMSFactory::configureBMS(BMS* const bmsInstance)
+void BMSFactory::configureElectricVehicleBMS(BMS* const bmsInstance)
 {
 	bmsInstance->AddParameter(Temperature_in_celcius, ParameterInfo("Temperature", "Celcius",   0,  45 ));
 	bmsInstance->AddParameter(Soc_in_percent        , ParameterInfo("Soc"        , "Percent",  20,  80 ));

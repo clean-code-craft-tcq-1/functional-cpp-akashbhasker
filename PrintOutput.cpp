@@ -1,9 +1,7 @@
-/*
- * PrintOutput.hpp
- *
- *  Created on: Mar 2, 2021
- *      Author: ahk7kor
- */
+/**************************************************************************************
+f* @file        : PrintOutput.cpp
+* @brief        : File contains necessary business logic to print the BatteryManagementSystem Output
+**************************************************************************************/
 
 #ifndef PRINTOUTPUT_CPP_
 #define PRINTOUTPUT_CPP_

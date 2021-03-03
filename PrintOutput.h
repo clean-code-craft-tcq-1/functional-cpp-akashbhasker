@@ -1,13 +1,10 @@
-/*
- * PrintOutput.h
- *
- *  Created on: Mar 2, 2021
- *      Author: ahk7kor
- */
+/**************************************************************************************
+f* @file        : PrintOutput.h
+* @brief        : File contains necessary business logic to print the BatteryManagementSystem Output
+**************************************************************************************/
 
 #ifndef PRINTOUTPUT_H_
 #define PRINTOUTPUT_H_
-
 
 #include "BatteryManagementSystem_Types.h"
 

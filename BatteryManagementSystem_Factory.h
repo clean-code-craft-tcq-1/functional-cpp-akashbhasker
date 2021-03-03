@@ -14,7 +14,7 @@ namespace BatteryManagementSystem
 class BMSFactory
 {
 	BMS* _electricVehicle_bmsInstance;
-	void configureBMS(BMS* const bmsInstance);
+	void configureElectricVehicleBMS(BMS* const bmsInstance);
 
 public:
 	BMSFactory();
