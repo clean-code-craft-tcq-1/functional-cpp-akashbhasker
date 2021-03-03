@@ -1,3 +1,8 @@
+/**************************************************************************************
+f* @file        : BatteryManagementSystem.cpp
+* @brief        : File contains necessary business logic to handle core logic of BMS
+**************************************************************************************/
+
 #include <assert.h>
 #include <iostream>
 
@@ -5,6 +10,7 @@
 #include "PrintOutput.h"
 
 using namespace std;
+using namespace BatteryManagementSystem;
 
 BMS::BMS()
 {
@@ -54,17 +60,8 @@ bool BMS::checkBatteryParameter_withValue(BatteryParameter parameter,float curre
 }
 
 /**
- * Description     : checkBounds : checks and returns the state of value wrt to min and max
- *
- */
-Bounds BMS::checkBounds(float currentValue, float min, float max)
-{
-	return ( currentValue < min ) ? Low : ( currentValue > max ) ? High : Normal;
-}
-
-/**
  * Description     : isParamWithinRange : Tests the Battery Parameter with the input Value.
- * 					 Prints Output and returns false if lesser than min threshold or greater than max threshold. Returns true if within range.
+ * 					 Prints Output and returns false if lesser than min threshold or greater than max threshold. Returns true if within range or same as threshold
  *
  */
 bool BMS::isParamWithinRange(BatteryParameter parameter,float currentValue)
@@ -82,6 +79,14 @@ bool BMS::isParamWithinRange(BatteryParameter parameter,float currentValue)
 	return false;
 }
 
+/**
+ * Description     : checkBounds : checks and returns the state of value wrt to min and max
+ *
+ */
+Bounds BMS::checkBounds(float currentValue, float min, float max)
+{
+	return ( currentValue < min ) ? Low : ( currentValue > max ) ? High : Normal;
+}
 
 
 

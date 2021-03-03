@@ -16,13 +16,13 @@
  *                                 Also prints the current value, Min Value and Max Value of the paramter
  *
  */
-void printOutput(ParameterInfo parameter, Bounds bound, float currentValue)
+void printOutput(BatteryManagementSystem::ParameterInfo parameter, BatteryManagementSystem::Bounds bound, float currentValue)
 {
-	if(bound == High)
+	if(bound == BatteryManagementSystem::High)
 	{
 		std::cout<<" WARNING   : "<< parameter.BatteryParametersStr<< " is High" << std::endl;
 	}
-	else if(bound == Low)
+	else if(bound == BatteryManagementSystem::Low)
 	{
 		std::cout<<" WARNING   : "<< parameter.BatteryParametersStr<< " is Low" << std::endl;
 	}

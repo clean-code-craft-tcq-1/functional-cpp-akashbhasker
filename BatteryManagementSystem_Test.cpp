@@ -1,45 +1,37 @@
+/**************************************************************************************
+f* @file        : BatteryManagementSystem_test.cpp
+* @brief        : File contains necessary business logic to test the various parameters of BMS
+**************************************************************************************/
+
 #include <assert.h>
 #include <iostream>
 using namespace std;
 
-#include "BatteryManagementSystem.h"
+#include "BatteryManagementSystem_Factory.h"
 
-/**
- * Description     : configureBMS : Configures the BMS instance with Parameters and Parameter related info ("paramterName in String" , " Units" ,Min Threshold, Max Threshold)
- *
- */
-void configureBMS(BMS* bmsInstance)
+void testElectricVehicle_BMS(BatteryManagementSystem::BMSTestIF* bmsTestInstance)
 {
-	if(bmsInstance != NULL)
+	if(bmsTestInstance != NULL)
 	{
-		bmsInstance->AddParameter(Temperature_in_celcius, ParameterInfo("Temperature", "Celcius",   0,  45 ));
-		bmsInstance->AddParameter(Soc_in_percent        , ParameterInfo("Temperature", "Percent",  20,  80 ));
-		bmsInstance->AddParameter(ChargeRate_in_C       , ParameterInfo("Charge Rate", "C"      , 0.5, 0.8 ));
-	}
-}
+		assert(bmsTestInstance->checkBatteryParameter_withValue(BatteryManagementSystem::Temperature_in_celcius, 25)  == true);
+		assert(bmsTestInstance->checkBatteryParameter_withValue(BatteryManagementSystem::Temperature_in_celcius, -10 )  == false);
+		assert(bmsTestInstance->checkBatteryParameter_withValue(BatteryManagementSystem::Temperature_in_celcius, 100) == false);
 
-void testBMS(BMS* bmsInstance)
-{
-	if(bmsInstance != NULL)
-	{
-		assert(bmsInstance->checkBatteryParameter_withValue(Temperature_in_celcius, 25)  == true);
-		assert(bmsInstance->checkBatteryParameter_withValue(Temperature_in_celcius, -10 )  == false);
-		assert(bmsInstance->checkBatteryParameter_withValue(Temperature_in_celcius, 100) == false);
+		assert(bmsTestInstance->checkBatteryParameter_withValue(BatteryManagementSystem::Soc_in_percent , 50)  == true);
+		assert(bmsTestInstance->checkBatteryParameter_withValue(BatteryManagementSystem::Soc_in_percent, 10 )  == false);
+		assert(bmsTestInstance->checkBatteryParameter_withValue(BatteryManagementSystem::Soc_in_percent, 100) == false);
 
-		assert(bmsInstance->checkBatteryParameter_withValue(Soc_in_percent , 50)  == true);
-		assert(bmsInstance->checkBatteryParameter_withValue(Soc_in_percent, 10 )  == false);
-		assert(bmsInstance->checkBatteryParameter_withValue(Soc_in_percent, 100) == false);
-
-		assert(bmsInstance->checkBatteryParameter_withValue(ChargeRate_in_C, 0.6)  == true);
-		assert(bmsInstance->checkBatteryParameter_withValue(ChargeRate_in_C, 0.4)  == false);
-		assert(bmsInstance->checkBatteryParameter_withValue(ChargeRate_in_C, 1.0) == false);
+		assert(bmsTestInstance->checkBatteryParameter_withValue(BatteryManagementSystem::ChargeRate_in_C, 0.6)  == true);
+		assert(bmsTestInstance->checkBatteryParameter_withValue(BatteryManagementSystem::ChargeRate_in_C, 0.4)  == false);
+		assert(bmsTestInstance->checkBatteryParameter_withValue(BatteryManagementSystem::ChargeRate_in_C, 1.0) == false);
 	}
 }
 
 int main() {
 
-	BMS bmsInstance;
-	configureBMS(&bmsInstance);
-	testBMS(&bmsInstance);
+	BatteryManagementSystem::BMSFactory bmsFactoryObject;
+	BatteryManagementSystem::BMSTestIF* bmsEV_TestInstance = bmsFactoryObject.getElectricVehicle_BMSTestObject();
+
+	testElectricVehicle_BMS(bmsEV_TestInstance);
 
 }

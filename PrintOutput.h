@@ -11,7 +11,7 @@
 
 #include "BatteryManagementSystem_Types.h"
 
-void printOutput(ParameterInfo parameter, Bounds bound, float currentValue);
+void printOutput(BatteryManagementSystem::ParameterInfo parameter, BatteryManagementSystem::Bounds bound, float currentValue);
 
 
 #endif /* PRINTOUTPUT_H_ */

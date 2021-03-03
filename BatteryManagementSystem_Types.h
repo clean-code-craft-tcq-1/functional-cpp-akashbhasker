@@ -8,7 +8,12 @@
 #ifndef BATTERYMANAGEMENTSYSTEM_TYPES_H_
 #define BATTERYMANAGEMENTSYSTEM_TYPES_H_
 
+namespace BatteryManagementSystem
+{
 
+/**
+ * Description     : All Possible Parameters Supported by Battery Management System To be Added here
+ */
 enum BatteryParameter
 {
 	Temperature_in_celcius = 0,
@@ -30,7 +35,7 @@ struct ParameterInfo
 	std::string units;
 	float min;
 	float max;
-	ParameterInfo(std::string _name = "",std::string _units="", float _min = 0, float _max = 0)
+	ParameterInfo(std::string _name = "", std::string _units="", float _min = 0, float _max = 0)
 	: BatteryParametersStr(_name)
 	, units(_units)
 	, min(_min)
@@ -40,7 +45,6 @@ struct ParameterInfo
 
 };
 
-
-
+} // namespace BatteryManagementSystem
 
 #endif /* BATTERYMANAGEMENTSYSTEM_TYPES_H_ */

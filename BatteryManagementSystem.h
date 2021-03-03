@@ -1,9 +1,7 @@
-/*
- * BatteryManagementSystem.h
- *
- *  Created on: Mar 3, 2021
- *      Author: ahk7kor
- */
+/**************************************************************************************
+f* @file        : BatteryManagementSystem.h
+* @brief        : File contains necessary business logic to handle core logic of BMS
+**************************************************************************************/
 
 #ifndef BATTERYMANAGEMENTSYSTEM_H_
 #define BATTERYMANAGEMENTSYSTEM_H_
@@ -11,9 +9,20 @@
 #include <unordered_map>
 #include "BatteryManagementSystem_Types.h"
 
+namespace BatteryManagementSystem
+{
+
 typedef std::unordered_map<BatteryParameter, ParameterInfo, std::hash<int> > BMSMap;
 
-class BMS
+class BMSTestIF
+{
+public:
+	BMSTestIF(){}
+	virtual ~BMSTestIF(){}
+	virtual bool checkBatteryParameter_withValue(BatteryParameter parameter,float currentValue) = 0;
+};
+
+class BMS : public BMSTestIF
 {
 	BMSMap umap_BMSData;
 	Bounds checkBounds(float currentValue, float min, float max);
@@ -29,6 +38,6 @@ public :
 };
 
 
-
+}//namespace BatteryManagementSystem
 
 #endif /* BATTERYMANAGEMENTSYSTEM_H_ */
